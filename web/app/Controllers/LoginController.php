@@ -9,5 +9,15 @@ class LoginController extends BaseController
         return view('login/login');
     }
 
+    public function pass_forgot()
+    {
+        return view('login/olvidar_pass');
+    }
+
+    public function create_account()
+    {
+        return view('login/create_account');
+    }
+
 
 }
