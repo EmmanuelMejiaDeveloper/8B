@@ -8,6 +8,7 @@
           </div>
           <div class="card-body">
             <p class="login-box-msg">Registrarse</p>
+            <?= $this->include("login/logo-create_count_svg"); ?>
 
             <form action="../../index.html" method="post">
               <div class="input-group mb-3">

@@ -5,13 +5,19 @@
           <!-- /.login-logo -->
           <div class="card card-outline card-primary">
             <div class="card-header text-center">
+
+              <!-- Esto es para hacer mas sencillo lo de los logos-->
+              <?= $this->include("login/contrasena_svg"); ?>
                 </div>
             <div class="card-body">
               <p class="login-box-msg">Logeate para inciar sesión</p>
 
-              <form action="../../index3.html" method="post">
+              <?= form_open("validar"); ?>
+
+              <?= csrf_field()?>
                 <div class="input-group mb-3">
-                  <input type="email" class="form-control" placeholder="correo">
+                  <?= form_input("email","",["class"=>"form-control","placeholder"=>"correo electronico","required"=>"required"]);?>
+
                   <div class="input-group-append">
                     <div class="input-group-text">
                       <span class="fas fa-envelope"></span>
@@ -19,7 +25,8 @@
                   </div>
                 </div>
                 <div class="input-group mb-3">
-                  <input type="password" class="form-control" placeholder="Contraseña">
+                    <?= form_password("contrasena","",["class"=>"form-control","placeholder"=>"Contraseña"]);?>
+
                   <div class="input-group-append">
                     <div class="input-group-text">
                       <span class="fas fa-lock"></span>
@@ -37,11 +44,12 @@
                   </div>
                   <!-- /.col -->
                   <div class="col-4">
-                    <button type="submit" class="btn btn-primary btn-block">Logear</button>
+                      <?= form_submit("","Ingresar",["class"=>"btn btn-primary btn-block","placeholder"=>"correo electronico","id"=>"enviar"]);?>
+
                   </div>
                   <!-- /.col -->
                 </div>
-              </form>
+              <?= form_close();?>
 
 
 

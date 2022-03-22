@@ -21,7 +21,7 @@ $routes->setDefaultController('Home');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
-$routes->setAutoRoute(true);
+$routes->setAutoRoute(false);
 
 /*
  * --------------------------------------------------------------------
@@ -34,12 +34,18 @@ $routes->setAutoRoute(true);
 //$routes->get('/', 'Home::index');
 
 $routes->match(['get','post'],'news/create','News::create');
-$routes->get('/', 'LoginController::index');
+$routes->get('/', 'LoginController::index',['as'=>'inicio']);
+$routes->post('/validar', 'LoginController::validar',['as'=>'validar']);
+//$routes->get('/dashboard', 'Dashboard::index',['as'=>'dashboard']);
+$routes->get('/clear', 'DbController::clear');
 $routes->get('/pass_forgot', 'LoginController::pass_forgot');
 $routes->get('/crear_cuenta', 'LoginController::create_account');
 $routes->get('news/(:segment)', 'News::view/$1');
 $routes->get('news', 'News::index');
-$routes->get('(:any)', 'Pages::view/$1');
+$routes->group('admin',static function($route){
+  $route->get('dashboard', 'LoginController::dashboard',['as'=>'dashboard']);
+});
+#$routes->get('(:any)', 'Pages::view/$1');
 
 /*
  * --------------------------------------------------------------------
