@@ -42,7 +42,7 @@ $routes->get('/pass_forgot', 'LoginController::pass_forgot');
 $routes->get('/crear_cuenta', 'LoginController::create_account');
 $routes->get('news/(:segment)', 'News::view/$1');
 $routes->get('news', 'News::index');
-$routes->group('admin',static function($route){
+$routes->group('admin',['filter'=> 'sesion'], function($route){
   $route->get('dashboard', 'LoginController::dashboard',['as'=>'dashboard']);
 });
 #$routes->get('(:any)', 'Pages::view/$1');
